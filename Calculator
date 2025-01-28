@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Cost Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #edf6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            width: 350px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        label {
+            font-size: 14px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        input {
+            width: 100px;
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #008b98;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #253746;
+        }
+        .result {
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        .result p {
+            margin: 5px 0;
+        }
+        .highlight {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Estimate Your Project Cost</h2>
+        <label>Enter your room dimensions in feet:</label>
+        <input type="number" id="length" placeholder="Length" min="1"> x 
+        <input type="number" id="breadth" placeholder="Breadth" min="1">
+        <button onclick="calculateCost()">Calculate</button>
+        <div class="result">
+            <p>= <span class="highlight" id="materialCost">$0.00</span></p>
+            <p><span class="highlight" id="monthlyPayment">$0</span>/month</p>
+            <p style="font-size:12px; color:#555;">Pricing shown is for materials only and represents an ESTIMATE. Request a free professional measure for a complete and accurate project cost.</p>
+        </div>
+    </div>
+
+    <script>
+        function calculateCost() {
+            let length = parseFloat(document.getElementById('length').value);
+            let breadth = parseFloat(document.getElementById('breadth').value);
+            let rate = 9.19;
+
+            if (isNaN(length) || isNaN(breadth) || length <= 0 || breadth <= 0) {
+                document.getElementById('materialCost').innerText = "$0.00";
+                document.getElementById('monthlyPayment').innerText = "$0";
+                return;
+            }
+            
+            let materialCost = length * breadth * rate;
+            let monthlyPayment = Math.floor(materialCost / 12);
+            
+            document.getElementById('materialCost').innerText = `$${materialCost.toFixed(2)}`;
+            document.getElementById('monthlyPayment').innerText = `$${monthlyPayment}`;
+        }
+    </script>
+</body>
+</html>
