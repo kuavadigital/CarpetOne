@@ -35,7 +35,7 @@
             font-size: 14px;
         }
         button {
-            background-color: #00796b;
+            background-color: #008b98;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -46,7 +46,7 @@
             width: 100%;
         }
         button:hover {
-            background-color: #004d40;
+            background-color: #253746;
         }
         .result {
             font-size: 16px;
@@ -65,8 +65,8 @@
     <div class="calculator">
         <h2>Estimate Your Project Cost</h2>
         <label>Enter your room dimensions in feet:</label>
-        <input type="number" id="length" placeholder="4" min="1"> x 
-        <input type="number" id="breadth" placeholder="4" min="1">
+        <input type="number" id="length" placeholder="Length" min="1"> x 
+        <input type="number" id="breadth" placeholder="Breadth" min="1">
         <button onclick="calculateCost()">Calculate</button>
         <div class="result">
             <p>= <span class="highlight" id="materialCost">$0.00</span></p>
